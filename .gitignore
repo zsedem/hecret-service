@@ -11,6 +11,7 @@ cabal-dev
 .hpc
 .hsenv
 .cabal-sandbox/
+hecret-service.cabal
 cabal.sandbox.config
 *.prof
 *.aux
