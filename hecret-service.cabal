@@ -1,0 +1,53 @@
+cabal-version: 1.12
+
+name:           hecret-service
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/hecret-service#readme>
+homepage:       https://github.com/githubuser/hecret-service#readme
+bug-reports:    https://github.com/githubuser/hecret-service/issues
+author:         Adam Oliver Zsigmond
+maintainer:     zsedem@gmail.com
+license:        LGPL
+license-file:   LICENSE
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/hecret-service
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_hecret_service
+  hs-source-dirs:
+      lib
+  build-depends:
+      base >=4.7 && <5,
+      dbus
+  default-language: Haskell2010
+
+executable hecret-service-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_hecret_service
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hecret-service
+  default-language: Haskell2010
+
+test-suite hecret-service-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hecret_service
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hecret-service
+  default-language: Haskell2010

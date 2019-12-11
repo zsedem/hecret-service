@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-with-nix:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('stack.yaml') }}-${{ hashFiles('Setup.hs') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: Setup Stack
+      uses: mstksg/setup-stack@v1
+    - name: Install Nix
+      uses: cachix/install-nix-action@v6
+    - name: Run tests
+      run: |
+        stack test
