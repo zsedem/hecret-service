@@ -17,7 +17,7 @@ jobs:
       uses: cachix/install-nix-action@v6
     - name:
       run: |
-        nix-env -iA nixos.stack
+        nix-env -i stack
     - name: Run tests
       run: |
         stack test
